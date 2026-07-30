@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+/* Theme vars — tuned to match your site */
+:root {
+  /* Deep, almost-navy background to blend with hero */
+  --background: #020617;
+  --foreground: #f9fafb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* If you want dark mode behavior later, we can re-add it,
+   but for now keep things stable + predictable. */
+/*
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+*/
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* ========================================================= */
+/*                       ANIMATIONS                          */
+/* ========================================================= */
+
+/* Fade In Hero */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.animate-fadeIn {
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
+/* Floating Card */
+@keyframes floatSmooth {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.floating-card {
+  animation: floatSmooth 6s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+.floating-card:hover {
+  transform: scale(1.02);
+}
+
+/* Glow Effect */
+@keyframes softGlow {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+  }
+}
+.glow-card {
+  animation: softGlow 5s ease-in-out infinite;
+}
+
+/* Staggered fade-up items (generic utility) */
+.fade-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-item:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.fade-item:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.fade-item:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.fade-item:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.fade-item:nth-child(5) {
+  animation-delay: 1s;
+}
+.fade-item:nth-child(6) {
+  animation-delay: 1.2s;
+}
+
+/* ========================================================= */
+/*      ICON STAGGER SLIDE FOR SECTION 2 ICONS               */
+/* ========================================================= */
+
+@keyframes iconSlideUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Add these classes on the 3 icon wrappers:
+   icon-slide icon-slide-1
+   icon-slide icon-slide-2
+   icon-slide icon-slide-3
+*/
+.icon-slide {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  animation: iconSlideUp 0.7s ease-out forwards;
+}
+
+.icon-slide-1 {
+  animation-delay: 0.15s;
+}
+
+.icon-slide-2 {
+  animation-delay: 0.3s;
+}
+
+.icon-slide-3 {
+  animation-delay: 0.45s;
+}
+
+/* ========================================================= */
+/*     NAVBAR HIDE/SHOW CONTROLLED BY BODY CLASS             */
+/* ========================================================= */
+
+.site-navbar {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.hide-navbar .site-navbar {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+/* ========================================================= */
+/*     (No section-wide slide opacity anymore – safer)       */
+/* ========================================================= */
+/* Hide iOS/Android built-in play button overlay for hero video */
+.hero-video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+.hero-video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
+.hero-video::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+/* Just in case other mobile UIs try to overlay something */
+.hero-video {
+  pointer-events: none;
+}

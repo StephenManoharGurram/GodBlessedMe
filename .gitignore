@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+
+# Django
+db.sqlite3
+
+# Node / Next.js
+node_modules/
+.next/
+myproject/backend/.env
+myproject/frontend/.env.local
