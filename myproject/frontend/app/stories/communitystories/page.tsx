@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchStories, PublicStory } from "@/app/components/stories/api/storiesApi";
+import { fetchStories, PublicStory } from "@/app/stories/api/storiesApi";
 
 export default function CommunityStories() {
   const [stories, setStories] = useState<PublicStory[]>([]);
