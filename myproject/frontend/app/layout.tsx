@@ -71,7 +71,7 @@ export default function RootLayout({
 
               <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm md:text-base ml-auto">
                 <Link
-                  href="/stories"
+                  href="./stories"
                   className="border border-[#F1F3E0] px-5 py-2 rounded-full text-xs sm:text-sm md:text-base bg-white/5 hover:bg-[#F1F3E0] hover:text-[#0b3d2e] transition whitespace-nowrap"
                 >
                   Stories

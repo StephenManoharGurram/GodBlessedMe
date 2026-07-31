@@ -1,5 +1,5 @@
-import StoryForm from "@/app/components/stories/storyform/page";
-import CommunityStories from "@/app/components/stories/communitystories/page";
+import StoryForm from "@/app/stories/storyform/page";
+import CommunityStories from "@/app/stories/communitystories/page";
 
 export default function StoriesPage() {
   return (

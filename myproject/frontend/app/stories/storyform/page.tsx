@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { submitStory } from "@/app/components/stories/api/storiesApi";
+import { submitStory } from "@/app/stories/api/storiesApi";
 
 type FormState = {
   title: string;
