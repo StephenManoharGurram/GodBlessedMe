@@ -1,7 +1,32 @@
 from rest_framework import generics
 from stories.models import Story
 from stories.serializers import StoryDisplaySerializer
+from rest_framework.generics import ListAPIView
+from .serializers import StoryListSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
+
+class StoryListView(generics.ListAPIView):
+    serializer_class = StoryListSerializer
+    queryset = Story.objects.select_related("author").all().order_by("-created_at")
+
+
+class DashboardActionReceiverAPIView(APIView):
+    def post(self, request, *args, **kwargs):
+        action = request.data.get("action")
+        target_id = request.data.get("target_id")
+
+        return Response(
+            {
+                "message": "Dashboard received the request.",
+                "received_action": action,
+                "received_target_id": target_id,
+            },
+            status=status.HTTP_200_OK,
+        )
+    
 # 1. RETRIEVE the list of all stories (Your Moderation Queue)
 class DashboardStoryListView(generics.ListAPIView):
     serializer_class = StoryDisplaySerializer
